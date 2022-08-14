@@ -73,6 +73,11 @@ function genBoardSlrv5(bingoList, seed) {
     if (seed == "") {
         seed = Math.ceil(999999 * Math.random())
     }
+
+    if (bingoList.length === 25) {
+        var originalBingoList = bingoList;
+        bingoList = [undefined].concat(originalBingoList);  // filler value for index 0
+    }
     
     var SEED = seed.toString();
     var size = 5;

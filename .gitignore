@@ -3,6 +3,7 @@ __pycache__/*
 dev/__pycache__/*
 generators/__pycache__/*
 generators/baseGens/__pycache__/*
+generators/generatorJsons/__pycache__/*
 dist/*
 build/*
 main.spec

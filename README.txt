@@ -25,6 +25,3 @@ then call
 
 Notes:
 - The generatorJsons are actually python files for build purposes, when adding something there, please don't add any code for readablility sake.
-- Generator jsons generally start with a None object, because slr v5 requires this. It's recommended to keep this consistant when adding now files. 
-- Do keep that None object in mind while making your own generators if they use a json.
-			(TODO: Fix this)

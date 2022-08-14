@@ -1,9 +1,5 @@
 __all__ = ['slrv5']
 
-# This code is unreadable, don't try, just use
-# from slrv5 import slrv5
-# slrv5.genBoardSlrv5(json, seed)
-
 # Don't look below, you will not understand this Python code :) I don't.
 
 from js2py.pyjs import *
@@ -16,11 +12,11 @@ var.registers(['genBoardSlrv5'])
 @Js
 def PyJsHoisted_genBoardSlrv5_(bingoList, seed, this, arguments, var=var):
     var = Scope({'bingoList':bingoList, 'seed':seed, 'this':this, 'arguments':arguments}, var)
-    var.registers(['j', 'i', 'synergy', 'lineCheckList', 'SEED', 'RNG', 'minSynObj', 'bingoList', 'seed', 'size', 'MAX_SEED', 'currentObj', 'bingoBoard', 'difficulty', 'checkLine', 'getDifficulty'])
+    var.registers(['RNG', 'seed', 'originalBingoList', 'difficulty', 'size', 'checkLine', 'getDifficulty', 'j', 'SEED', 'synergy', 'currentObj', 'bingoBoard', 'minSynObj', 'i', 'bingoList', 'MAX_SEED', 'lineCheckList'])
     @Js
     def PyJsHoisted_difficulty_(i, this, arguments, var=var):
         var = Scope({'i':i, 'this':this, 'arguments':arguments}, var)
-        var.registers(['Table1', 'i', 'value', 'Table5', 'x', 'y', 'RemT', 'e1', 'Rem3', 'Rem8', 'Num3', 'Rem5', 'e5', 'Rem4', 'Rem2'])
+        var.registers(['RemT', 'Rem4', 'Table5', 'Table1', 'Rem5', 'e1', 'x', 'value', 'i', 'y', 'Num3', 'Rem3', 'Rem2', 'Rem8', 'e5'])
         var.put('Num3', (var.get('SEED')%Js(1000.0)))
         var.put('Rem8', (var.get('Num3')%Js(8.0)))
         var.put('Rem4', var.get('Math').callprop('floor', (var.get('Rem8')/Js(2.0))))
@@ -60,7 +56,7 @@ def PyJsHoisted_genBoardSlrv5_(bingoList, seed, this, arguments, var=var):
     @Js
     def PyJsHoisted_checkLine_(i, typesA, this, arguments, var=var):
         var = Scope({'i':i, 'typesA':typesA, 'this':this, 'arguments':arguments}, var)
-        var.registers(['i', 'l', 'typesA', 'synergy', 'k', 'j', 'typesB'])
+        var.registers(['synergy', 'j', 'l', 'typesB', 'k', 'i', 'typesA'])
         var.put('synergy', Js(0.0))
         #for JS loop
         var.put('j', Js(0.0))
@@ -95,6 +91,9 @@ def PyJsHoisted_genBoardSlrv5_(bingoList, seed, this, arguments, var=var):
     var.put('checkLine', PyJsHoisted_checkLine_)
     if (var.get('seed')==Js('')):
         var.put('seed', var.get('Math').callprop('ceil', (Js(999999.0)*var.get('Math').callprop('random'))))
+    if PyJsStrictEq(var.get('bingoList').get('length'),Js(25.0)):
+        var.put('originalBingoList', var.get('bingoList'))
+        var.put('bingoList', Js([var.get('undefined')]).callprop('concat', var.get('originalBingoList')))
     var.put('SEED', var.get('seed').callprop('toString'))
     var.put('size', Js(5.0))
     if Js(True):
@@ -171,11 +170,11 @@ var.put('genBoardSlrv5', PyJsHoisted_genBoardSlrv5_)
 @Js
 def PyJs_anonymous_0_(j, i, g, m, k, n, o, this, arguments, var=var):
     var = Scope({'j':j, 'i':i, 'g':g, 'm':m, 'k':k, 'n':n, 'o':o, 'this':this, 'arguments':arguments}, var)
-    var.registers(['i', 'o', 'm', 'l', 'g', 'q', 'p', 'k', 'j', 'n'])
+    var.registers(['j', 'n', 'g', 'l', 'k', 'i', 'p', 'o', 'm', 'q'])
     @Js
     def PyJsHoisted_q_(b, this, arguments, var=var):
         var = Scope({'b':b, 'this':this, 'arguments':arguments}, var)
-        var.registers(['d', 'b', 'c', 'h', 'f', 'e', 'a'])
+        var.registers(['d', 'h', 'e', 'a', 'c', 'f', 'b'])
         var.put('a', var.get(u"this"))
         var.put('c', var.get('b').get('length'))
         var.put('d', Js(0.0))
@@ -197,7 +196,7 @@ def PyJs_anonymous_0_(j, i, g, m, k, n, o, this, arguments, var=var):
         @Js
         def PyJs_anonymous_1_(b, this, arguments, var=var):
             var = Scope({'b':b, 'this':this, 'arguments':arguments}, var)
-            var.registers(['d', 'i', 'c', 'h', 'f', 'e', 'b'])
+            var.registers(['d', 'h', 'i', 'e', 'b', 'c', 'f'])
             var.put('c', var.get('a').get('S'))
             var.put('d', ((var.get('a').get('i')+Js(1.0))&(var.get('g')-Js(1.0))))
             var.put('e', var.get('c').get(var.get('d')))
@@ -223,7 +222,7 @@ def PyJs_anonymous_0_(j, i, g, m, k, n, o, this, arguments, var=var):
     @Js
     def PyJsHoisted_p_(b, e, f, a, c, this, arguments, var=var):
         var = Scope({'b':b, 'e':e, 'f':f, 'a':a, 'c':c, 'this':this, 'arguments':arguments}, var)
-        var.registers(['c', 'a', 'f', 'e', 'b'])
+        var.registers(['a', 'e', 'b', 'c', 'f'])
         var.put('f', Js([]))
         var.put('c', var.get('b',throw=False).typeof())
         if (var.get('e') and (var.get('c')==Js('object'))):
@@ -233,23 +232,23 @@ def PyJs_anonymous_0_(j, i, g, m, k, n, o, this, arguments, var=var):
                     try:
                         var.get('f').callprop('push', var.get('p')(var.get('b').get(var.get('a')), (var.get('e')-Js(1.0))))
                     except PyJsException as PyJsTempException:
-                        PyJsHolder_64_55070682 = var.own.get('d')
+                        PyJsHolder_64_22758356 = var.own.get('d')
                         var.force_own_put('d', PyExceptionToJs(PyJsTempException))
                         try:
                             pass
                         finally:
-                            if PyJsHolder_64_55070682 is not None:
-                                var.own['d'] = PyJsHolder_64_55070682
+                            if PyJsHolder_64_22758356 is not None:
+                                var.own['d'] = PyJsHolder_64_22758356
                             else:
                                 del var.own['d']
-                            del PyJsHolder_64_55070682
+                            del PyJsHolder_64_22758356
         return (var.get('f') if var.get('f').get('length') else (var.get('b')+(Js('\x00') if (var.get('c')!=Js('string')) else Js(''))))
     PyJsHoisted_p_.func_name = 'p'
     var.put('p', PyJsHoisted_p_)
     @Js
     def PyJsHoisted_l_(b, e, f, a, this, arguments, var=var):
         var = Scope({'b':b, 'e':e, 'f':f, 'a':a, 'this':this, 'arguments':arguments}, var)
-        var.registers(['d', 'c', 'h', 'a', 'f', 'e', 'b'])
+        var.registers(['d', 'a', 'h', 'e', 'b', 'c', 'f'])
         var.put('b', Js(''), '+')
         #for JS loop
         var.put('a', var.put('f', Js(0.0)))
@@ -274,7 +273,7 @@ def PyJs_anonymous_0_(j, i, g, m, k, n, o, this, arguments, var=var):
     @Js
     def PyJs_anonymous_3_(b, e, this, arguments, var=var):
         var = Scope({'b':b, 'e':e, 'this':this, 'arguments':arguments}, var)
-        var.registers(['b', 'f', 'e', 'a'])
+        var.registers(['a', 'e', 'f', 'b'])
         var.put('f', Js([]))
         var.put('b', var.get('l')(var.get('p')((Js([var.get('b'), var.get('j')]) if var.get('e') else (var.get('b') if var.get('arguments').get('length') else Js([var.get('Date').create().callprop('getTime'), var.get('j'), var.get('window')]))), Js(3.0)), var.get('f')))
         var.put('a', var.get('q').create(var.get('f')))

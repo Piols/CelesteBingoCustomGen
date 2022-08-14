@@ -10,9 +10,9 @@ def generate(genType:str, seed:str) -> dict:
 
 gameModeDict = {
 	"Sorted New Lockout" :
-		lambda seed : sortBaseGen.genSortedBoard(newLockout, seed),
+		lambda seed : sortBaseGen.genSortedBoard(newLockout.newLockoutJson, seed),
 	"Invasion New Lockout" :
-		lambda seed : invasionGen.genInvasionBoard(newLockout, seed),
+		lambda seed : invasionGen.genInvasionBoard(newLockout.newLockoutJson, seed),
 }
 
 gameModeSet = tuple(list(gameModeDict.keys()))
