@@ -12,6 +12,7 @@ def genInvasionBoard(json, seed):
 	cutoff2 = 20
 	batch3 = [7,11,12,13,17]
 
+	random.seed(seed)
 	random.shuffle(batch1)
 	random.shuffle(batch2)
 	random.shuffle(batch3)
