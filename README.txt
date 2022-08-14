@@ -15,7 +15,8 @@ then call
 )
 
 - Go to the generatorHandler.py file and a value to the gameModeDict dictionairy. Which key is the name of your generator, 
-  and its value is a lambda function from seed to board file.
+  and its value is a lambda function from json and seed to board file. (If you don't want to support any json but want something
+  specific to the gen, simpelly take the json argument but don't use it)
 
 (The generator will always recieve a number between 0 and 999999 as a string (TODO: Make this not true))
 

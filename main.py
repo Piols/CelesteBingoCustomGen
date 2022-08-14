@@ -8,9 +8,13 @@ import bingoSyncConnection as bingosync
 
 
 def execute():
-	
+
 	if gameModeChoice.get() == "":
-		outputText("Please choose an option")
+		outputText("Please choose a gamemode option")
+		return
+
+	if submodeChoice.get() == "":
+		outputText("Please choose a submode option")
 		return
 
 	seed = seedBox.get()
@@ -23,7 +27,7 @@ def execute():
 	else:
 		seed = random.randint(0,999999)
 
-	board = generatorHandler.generate(gameModeChoice.get(), str(seed))
+	board = generatorHandler.generate(gameModeChoice.get(), submodeChoice.get(), str(seed))
 	password = passwordBox.get()
 	lockout = True if lockoutBox.get() else False
 	roomId = boardIdBox.get()
@@ -32,7 +36,7 @@ def execute():
 
 	bingosync.setBoard(roomId, lockout, board)
 
-	bingosync.sendMessage(roomId, f"Changed the board to {gameModeChoice.get()}")
+	bingosync.sendMessage(roomId, f"Changed the board to {gameModeChoice.get()} ({submodeChoice.get()})")
 	
 	outputText("Succesfull (probably, haven't coded error handling)")
 
@@ -60,37 +64,43 @@ lbl.place(x=20, y=78)
 gameModeChoice=Combobox(window, values=generatorHandler.gameModeSet)
 gameModeChoice.place(x=80, y=80)
 
+lbl=Label(window, text="Submode:", fg='black', font=("Helvetica", 12))
+lbl.place(x=20, y=108)
+
+submodeChoice=Combobox(window, values=generatorHandler.submodeSet)
+submodeChoice.place(x=100, y=110)
+
 lbl=Label(window, text="Lockout:", fg='black', font=("Helvetica", 12))
-lbl.place(x=20, y=110)
+lbl.place(x=20, y=140)
 
 lockoutBox = IntVar()
 
 b=Checkbutton(window, variable=lockoutBox)
-b.place(x=80, y=110)
+b.place(x=80, y=140)
 
 lbl=Label(window, text="BoardId:", fg='black', font=("Helvetica", 12))
-lbl.place(x=20, y=138)
-
-boardIdBox=Entry(window)
-boardIdBox.place(x=85, y=140)
-
-lbl=Label(window, text="Password:", fg='black', font=("Helvetica", 12))
 lbl.place(x=20, y=168)
 
-passwordBox=Entry(window)
-passwordBox.place(x=100, y=170)
+boardIdBox=Entry(window)
+boardIdBox.place(x=85, y=170)
 
-lbl=Label(window, text="Seed:", fg='black', font=("Helvetica", 12))
+lbl=Label(window, text="Password:", fg='black', font=("Helvetica", 12))
 lbl.place(x=20, y=198)
 
+passwordBox=Entry(window)
+passwordBox.place(x=100, y=200)
+
+lbl=Label(window, text="Seed:", fg='black', font=("Helvetica", 12))
+lbl.place(x=20, y=228)
+
 seedBox=Entry(window)
-seedBox.place(x=100, y=200)
+seedBox.place(x=100, y=230)
 
 btn = Button(window, text="Generate", fg='black', command=execute)
-btn.place(x=20, y=250)
+btn.place(x=20, y=280)
 
 output=Label(window, text="", fg='red', font=("Helvetica", 12))
-output.place(x=20, y=280)
+output.place(x=20, y=310)
 
 
 
