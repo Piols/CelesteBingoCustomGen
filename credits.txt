@@ -1,8 +1,8 @@
 Main Author:
 	- Cirion02
 
-Other important code:
-	- 
+Other coders:
+	- Piols
 
 Added custom generator:
 	-
