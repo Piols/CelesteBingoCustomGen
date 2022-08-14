@@ -1,4 +1,4 @@
-[null,
+newLockoutJson = [None,
 	[{"name":"All Berries in Start of 1A (6)","types":["checkpoint_berries"]},{"name":"Old Site Blue Heart","types":["earlygame","blue_heart"]},{"name":"Talk to Theo in Crossing","types":["earlygame","cutscene"]},{"name":"Complete 1A Start without dashing","types":["earlygame","task"]},{"name":"Forsaken City Cassette","types":["earlygame","cassette"]},{"name":"All Berries in Chasm (5)","types":["checkpoint_berries"]},{"name":"Forsaken City Blue Heart","types":["earlygame","blue_heart"]},{"name":"Get a 1-Up in 1A","types":["earlygame","1up"]},{"name":"Complete 1A Start without jumping","types":["earlygame","task"]}],
 	
 	[{"name":"Complete Chasm without dashing","types":["earlygame","task"]},{"name":"Get two 1-Ups","types":["1up"]},{"name":"Complete Awake without dashing","types":["earlygame","awake","task"]},{"name":"Talk to Theo in Awake","types":["earlygame","awake","cutscene"]},{"name":"All Berries in Start of 2A (9)","types":["checkpoint_berries"]},{"name":"All Berries in Awake (1)","types":["earlygame"]},{"name":"10 Berries in 1A","types":["amount_berries"]},{"name":"Old Site Cassette","types":["earlygame","cassette"]}],

@@ -1,6 +1,6 @@
 __all__ = ['slrv5']
 
-#This code is unreadable, don't try, just use
+# This code is unreadable, don't try, just use
 # from slrv5 import slrv5
 # slrv5.genBoardSlrv5(json, seed)
 
