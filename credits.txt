@@ -1,0 +1,8 @@
+Main Author:
+	- Cirion02
+
+Other important code:
+	- 
+
+Added custom generator:
+	-

@@ -1,0 +1,5 @@
+.vscode
+__pycache__/*
+dev/__pycache__/*
+generators/__pycache__/*
+generators/baseGens/__pycache__/*
