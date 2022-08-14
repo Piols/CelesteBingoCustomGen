@@ -37,6 +37,6 @@ def genFogOfWarBoard(json, seed):
 	for space in board:
 		if space:
 			dif = space["difficulty"]
-			result[objectivePositions[dif - 1]] = {"name" : space["name"]}
+			result[objectivePositions[dif - 1]] = {"name" : f"{space['name']} $" if dif == 1 else space["name"]}
 
 	return result
