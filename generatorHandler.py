@@ -11,6 +11,7 @@ import generators.sortBaseGen as sortBaseGen
 import generators.invasionGen as invasionGen
 import generators.fogOfWarGen as fogOfWarGen
 import generators.randomGen as randomGen
+import generators.fogOfWarNoEdgeStart as fowNoEdgeStart
 
 def generate(genType:str, subType:str, seed:str) -> dict:
 	return gameModeDict[genType](submodeDict[subType], seed)
@@ -26,6 +27,8 @@ gameModeDict = {
 		lambda json, seed : invasionGen.genInvasionBoard(json, seed),
 	"Fog of War" :
 		lambda json, seed : fogOfWarGen.genFogOfWarBoard(json, seed),
+	"No edge start FoW" :
+		lambda json, seed : fowNoEdgeStart.genFoWNoEdgeStartBoard(json, seed),
 }
 
 gameModeSet = tuple(list(gameModeDict.keys()))
