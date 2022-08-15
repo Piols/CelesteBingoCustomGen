@@ -5,4 +5,4 @@ Other coders:
 	- Piols
 
 Added custom generator:
-	- Piols (FoW, Random)
+	- Piols (FoW, Random, Invasion baseGen, Symmetrical Invasion)

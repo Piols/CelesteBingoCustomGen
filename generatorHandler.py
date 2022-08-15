@@ -11,6 +11,7 @@ import generators.sortBaseGen as sortBaseGen
 import generators.invasionGen as invasionGen
 import generators.fogOfWarGen as fogOfWarGen
 import generators.randomGen as randomGen
+import generators.symmetricalInvasionGen as symmetricalInvasionGen
 
 def generate(genType:str, subType:str, seed:str) -> dict:
 	return gameModeDict[genType](submodeDict[subType], seed)
@@ -24,6 +25,8 @@ gameModeDict = {
 		lambda json, seed : sortBaseGen.genSortedBoard(json, seed),
 	"Invasion" :
 		lambda json, seed : invasionGen.genInvasionBoard(json, seed),
+	"Symmetrical Invasion" :
+		lambda json, seed : symmetricalInvasionGen.genSymmetricalInvasionBoard(json, seed),
 	"Fog of War" :
 		lambda json, seed : fogOfWarGen.genFogOfWarBoard(json, seed),
 }
