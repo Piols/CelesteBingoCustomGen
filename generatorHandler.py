@@ -10,6 +10,7 @@ import generators.normalGen as normalGen
 import generators.sortBaseGen as sortBaseGen
 import generators.invasionGen as invasionGen
 import generators.fogOfWarGen as fogOfWarGen
+import generators.invarionSymmetryGen as invarionSymmetryGen
 
 def generate(genType:str, subType:str, seed:str) -> dict:
 	return gameModeDict[genType](submodeDict[subType], seed)
@@ -19,10 +20,12 @@ gameModeDict = {
 		lambda json, seed : normalGen.genBoard(json, seed),
 	"Sorted" :
 		lambda json, seed : sortBaseGen.genSortedBoard(json, seed),
-	"Invasion" :
+	"Invasion (Batched)" :
 		lambda json, seed : invasionGen.genInvasionBoard(json, seed),
 	"Fog of War" :
 		lambda json, seed : fogOfWarGen.genFogOfWarBoard(json, seed),
+	"Invasion (Symmetry)" :
+		lambda json, seed : invarionSymmetryGen.genInvasionSymmetryBoard(json, seed),
 }
 
 gameModeSet = tuple(list(gameModeDict.keys()))
