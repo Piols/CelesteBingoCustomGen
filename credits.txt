@@ -5,4 +5,4 @@ Other coders:
 	- Piols
 
 Added custom generator:
-	- Piols (FoW)
+	- Piols (FoW, Random)
