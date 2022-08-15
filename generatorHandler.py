@@ -9,7 +9,7 @@ import generators.generatorJsons.teamsBlackout as teamsBlackout
 import generators.normalGen as normalGen
 import generators.sortBaseGen as sortBaseGen
 import generators.invasionGen as invasionGen
-import generators.fogOfWarUpdatedGen as fogOfWarUpdatedGen
+import generators.fogOfWarGen as fogOfWarGen
 import generators.randomGen as randomGen
 
 def generate(genType:str, subType:str, seed:str) -> dict:
