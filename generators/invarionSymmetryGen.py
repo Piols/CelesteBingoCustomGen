@@ -15,14 +15,18 @@ def genInvasionSymmetryBoard(json, seed):
 	
 
 	random.seed(seed)
-	slots = range(0,25)
+	slots = list(range(0,25))
 	random.shuffle(slots)
 
 	while slots:
 		slot = slots.pop(0)
 		result[slot] = boardtemp.pop(0)
+		print(slot)
+		print(result[slot]["name"])
 		if slot != 12:
 			result[24-slot] = boardtemp.pop(0)
+			print(24-slot)
+			print(result[24-slot]["name"])
 			slots.remove(24-slot)
 			
 	return result
