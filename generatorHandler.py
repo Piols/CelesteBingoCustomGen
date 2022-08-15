@@ -7,10 +7,11 @@ import generators.generatorJsons.soloBlackout as soloBlackout
 import generators.generatorJsons.teamsBlackout as teamsBlackout
 
 import generators.normalGen as normalGen
+import generators.randomGen as randomGen
 import generators.sortBaseGen as sortBaseGen
 import generators.invasionGen as invasionGen
+import generators.invarionSymmetryGen as invarionSymmetryGen
 import generators.fogOfWarGen as fogOfWarGen
-import generators.randomGen as randomGen
 import generators.fogOfWarNoEdgeStart as fowNoEdgeStart
 
 def generate(genType:str, subType:str, seed:str) -> dict:
@@ -23,12 +24,15 @@ gameModeDict = {
 		lambda json, seed : randomGen.genRandomBoard(json, seed),
 	"Sorted" :
 		lambda json, seed : sortBaseGen.genSortedBoard(json, seed),
-	"Invasion" :
+	"Invasion (Batched)" :
 		lambda json, seed : invasionGen.genInvasionBoard(json, seed),
+  "Invasion (Symmetry)" :
+		lambda json, seed : invarionSymmetryGen.genInvasionSymmetryBoard(json, seed),
 	"Fog of War" :
 		lambda json, seed : fogOfWarGen.genFogOfWarBoard(json, seed),
 	"No edge start FoW" :
 		lambda json, seed : fowNoEdgeStart.genFoWNoEdgeStartBoard(json, seed),
+
 }
 
 gameModeSet = tuple(list(gameModeDict.keys()))
