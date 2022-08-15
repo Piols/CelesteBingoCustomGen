@@ -25,7 +25,7 @@ gameModeDict = {
 	"Invasion" :
 		lambda json, seed : invasionGen.genInvasionBoard(json, seed),
 	"Fog of War" :
-		lambda json, seed : fogOfWarUpdatedGen.genFogOfWarUpdatedBoard(json, seed),
+		lambda json, seed : fogOfWarGen.genFogOfWarBoard(json, seed),
 }
 
 gameModeSet = tuple(list(gameModeDict.keys()))
