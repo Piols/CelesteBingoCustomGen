@@ -158,7 +158,6 @@ def genFogOfWarBoard(json, seed):
 		random.shuffle(availableObjectives)
 		easyObjectiveOrder.append(availableObjectives.pop(0))
 
-	print(easyObjectiveOrder)
 	for i in range(fullRevealCutoff):
 		random.shuffle(positions)
 		currentPosition = positions.pop(0)
@@ -184,7 +183,6 @@ def genFogOfWarBoard(json, seed):
 
 	for space in board:
 		dif = space['difficulty']
-		print(dif)
 		if dif == 1:
 			result.append({"name": f"{space['name']} $"})
 		elif dif > fullRevealCutoff:
