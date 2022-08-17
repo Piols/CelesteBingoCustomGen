@@ -4,7 +4,7 @@ dist1 = [[5, 1], [0, 6, 2], [1, 7, 3], [2, 8, 4], [3, 9], [0, 10, 6], [5, 1, 11,
 dist2 = [[10, 6, 2], [5, 11, 7, 3], [0, 6, 12, 8, 4], [1, 7, 13, 9], [2, 8, 14], [15, 1, 11, 7], [0, 10, 16, 2, 12, 8], [5, 1, 11, 17, 3, 13, 9], [6, 2, 12, 18, 4, 14], [7, 3, 13, 19], [0, 20, 6, 16, 12], [5, 15, 1, 21, 7, 17, 13], [10, 6, 16, 2, 22, 8, 18, 14], [11, 7, 17, 3, 23, 9, 19], [12, 8, 18, 4, 24], [5, 11, 21, 17], [10, 20, 6, 12, 22, 18], [15, 11, 21, 7, 13, 23, 19], [16, 12, 22, 8, 14, 24], [17, 13, 23, 9], [10, 16, 22], [15, 11, 17, 23], [20, 16, 12, 18, 24], [21, 17, 13, 19], [22, 18, 14]]
 dist3 = [[15, 11, 7, 3], [10, 16, 12, 8, 4], [5, 11, 17, 13, 9], [0, 6, 12, 18, 14], [1, 7, 13, 19], [20, 16, 2, 12, 8], [15, 21, 17, 3, 13, 9], [0, 10, 16, 22, 18, 4, 14], [5, 1, 11, 17, 23, 19], [6, 2, 12, 18, 24], [1, 21, 7, 17, 13], [0, 20, 2, 22, 8, 18, 14], [5, 15, 1, 21, 3, 23, 9, 19], [10, 6, 16, 2, 22, 4, 24], [11, 7, 17, 3, 23], [0, 6, 12, 22, 18], [5, 1, 7, 13, 23, 19], [10, 20, 6, 2, 8, 14, 24], [15, 11, 21, 7, 3, 9], [16, 12, 22, 8, 4], [5, 11, 17, 23], [10, 6, 12, 18, 24], [15, 11, 7, 13, 19], [20, 16, 12, 8, 14], [21, 17, 13, 9]]
 
-distPenalty = [0, 4, 2, 1]
+distPenalty = [0, 2, 1, 0]
 fullRevealCutoff = 18
 
 def getObjectives(json, seed, objPos):
@@ -120,12 +120,17 @@ def genFogOfWarBoard(json, seed):
 		used[x] = False
 		return countVisited() == 25
 
+	hardObjectives = []
 	for i in range(fullRevealCutoff, 25):
+		hardObjectives.append(i)
+	random.shuffle(hardObjectives)
+
+	for obj in hardObjectives:
 		position = random.randint(0, 24)
 		while not okTile(position):
 			position = random.randint(0, 24)
 		used[position] = True
-		objectivePositions[i] = position
+		objectivePositions[obj] = position
 
 	startCandidates = []
 	smallestDist = 10
@@ -143,10 +148,20 @@ def genFogOfWarBoard(json, seed):
 	used[start] = True
 	positions.append(start)
 
+	availableObjectives = []
+	easyObjectiveOrder = [0]
+	for i in range(1, fullRevealCutoff):
+		if i * 2 - 1 <= fullRevealCutoff - 1:
+			availableObjectives.append(i * 2 - 1)
+		if i * 2 <= fullRevealCutoff - 1:
+			availableObjectives.append(i * 2)
+		random.shuffle(availableObjectives)
+		easyObjectiveOrder.append(availableObjectives.pop(0))
+
 	for i in range(fullRevealCutoff):
 		random.shuffle(positions)
 		currentPosition = positions.pop(0)
-		objectivePositions[i] = currentPosition
+		objectivePositions[easyObjectiveOrder[i]] = currentPosition
 		if currentPosition >= 5: # Up
 			if not used[currentPosition - 5]:
 				used[currentPosition - 5] = True
