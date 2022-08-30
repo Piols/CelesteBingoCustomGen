@@ -184,7 +184,7 @@ def genFogOfWarBoard(json, seed):
 	for space in board:
 		dif = space['difficulty']
 		if dif == 1:
-			result.append({"name": f"{space['name']} $"})
+			result.append({"name": f"{space['name']}\uFEFF"})
 		elif dif > fullRevealCutoff:
 			result.append({"name": f"{space['name']}"})
 		else:
