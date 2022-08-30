@@ -18,6 +18,6 @@ def genFoWNoEdgeStartBoard(json, seed):
 
 	for space in board:
 		if space:
-			result.append({"name": f"{space['name']}\uFEFF" if space['difficulty'] == 1 else space["name"]})
+			result.append({"name": f"{space['name']} $" if space['difficulty'] == 1 else space["name"]})
 
 	return result
