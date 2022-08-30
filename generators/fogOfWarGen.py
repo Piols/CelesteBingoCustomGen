@@ -5,7 +5,8 @@ dist2 = [[10, 6, 2], [5, 11, 7, 3], [0, 6, 12, 8, 4], [1, 7, 13, 9], [2, 8, 14],
 dist3 = [[15, 11, 7, 3], [10, 16, 12, 8, 4], [5, 11, 17, 13, 9], [0, 6, 12, 18, 14], [1, 7, 13, 19], [20, 16, 2, 12, 8], [15, 21, 17, 3, 13, 9], [0, 10, 16, 22, 18, 4, 14], [5, 1, 11, 17, 23, 19], [6, 2, 12, 18, 24], [1, 21, 7, 17, 13], [0, 20, 2, 22, 8, 18, 14], [5, 15, 1, 21, 3, 23, 9, 19], [10, 6, 16, 2, 22, 4, 24], [11, 7, 17, 3, 23], [0, 6, 12, 22, 18], [5, 1, 7, 13, 23, 19], [10, 20, 6, 2, 8, 14, 24], [15, 11, 21, 7, 3, 9], [16, 12, 22, 8, 4], [5, 11, 17, 23], [10, 6, 12, 18, 24], [15, 11, 7, 13, 19], [20, 16, 12, 8, 14], [21, 17, 13, 9]]
 
 distPenalty = [0, 2, 1, 0]
-fullRevealCutoff = 18
+objectivePackSize = 3
+fullRevealCutoff = 20
 
 def getObjectives(json, seed, objPos):
 	random.seed(seed)
@@ -150,11 +151,10 @@ def genFogOfWarBoard(json, seed):
 
 	availableObjectives = []
 	easyObjectiveOrder = [0]
-	for i in range(1, fullRevealCutoff):
-		if i * 2 - 1 <= fullRevealCutoff - 1:
-			availableObjectives.append(i * 2 - 1)
-		if i * 2 <= fullRevealCutoff - 1:
-			availableObjectives.append(i * 2)
+	for i in range(fullRevealCutoff - 1):
+		for j in range(objectivePackSize):
+			if i * objectivePackSize + 1 + j < fullRevealCutoff:
+				availableObjectives.append(i * objectivePackSize + 1 + j)
 		random.shuffle(availableObjectives)
 		easyObjectiveOrder.append(availableObjectives.pop(0))
 
